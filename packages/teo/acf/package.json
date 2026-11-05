@@ -1,0 +1,15 @@
+{
+    "name": "@teo/acf",
+    "version": "0.1.0",
+    "description": "ACF-like custom fields frontend (Vue 3 + PrimeVue) for the teo/acf Laravel package",
+    "type": "module",
+    "main": "resources/js/index.js",
+    "exports": {
+        ".": "./resources/js/index.js"
+    },
+    "peerDependencies": {
+        "vue": "^3.3",
+        "primevue": "^3.0",
+        "axios": "^1.0"
+    }
+}

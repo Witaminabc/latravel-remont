@@ -1,0 +1,14 @@
+{
+    "name": "@teo/admin",
+    "version": "1.0.0",
+    "type": "module",
+    "main": "resources/js/main.js",
+    "scripts": {},
+    "peerDependencies": {
+        "vue": "^3.3",
+        "pinia": "^2.1",
+        "vue-router": "^4.3",
+        "primevue": "^3.50|^4.0",
+        "axios": "^1.6"
+    }
+}

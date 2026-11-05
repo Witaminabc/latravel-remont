@@ -1,0 +1,389 @@
+/* teo/chat — стили панели «Сообщения» (совместимы с темой PrimeVue) */
+
+.teo-chat {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* --- Статистика --- */
+.teo-chat-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 12px;
+}
+
+.teo-chat-stat {
+    background: var(--surface-card, #fff);
+    border: 1px solid var(--content-border, #dee2e6);
+    border-radius: 8px;
+    padding: 12px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.teo-chat-stat__value {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text-color, #212121);
+    line-height: 1.2;
+}
+
+.teo-chat-stat__label {
+    font-size: 12px;
+    color: var(--text-color-secondary, #6c757d);
+}
+
+.teo-chat-stat.is-online .teo-chat-stat__value {
+    color: #16a34a;
+}
+
+.teo-chat-stat.is-unread .teo-chat-stat__value {
+    color: var(--primary-color, #3b82f6);
+}
+
+/* --- Каркас: две колонки --- */
+.teo-chat__body {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    height: calc(100vh - 320px);
+    min-height: 460px;
+    background: var(--surface-card, #fff);
+    border: 1px solid var(--content-border, #dee2e6);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+@media (max-width: 992px) {
+    .teo-chat__body {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* --- Список диалогов --- */
+.teo-chat-threads {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    border-right: 1px solid var(--content-border, #dee2e6);
+    background: var(--surface-ground, #f8f9fa);
+}
+
+.teo-chat-threads__head {
+    padding: 12px;
+    border-bottom: 1px solid var(--content-border, #dee2e6);
+}
+
+.teo-chat-threads__list {
+    flex: 1;
+    overflow-y: auto;
+    padding: 6px;
+}
+
+.teo-chat-empty {
+    padding: 24px 12px;
+    text-align: center;
+    color: var(--text-color-secondary, #6c757d);
+    font-size: 14px;
+}
+
+.teo-thread {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    padding: 10px;
+    border: none;
+    background: transparent;
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: left;
+    transition: background-color 0.15s ease;
+}
+
+.teo-thread:hover {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.teo-thread.is-active {
+    background: rgba(59, 130, 246, 0.12);
+}
+
+.teo-thread__avatar {
+    position: relative;
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--primary-color, #3b82f6);
+    color: var(--primary-color-text, #fff);
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.teo-thread__avatar.is-online::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #22c55e;
+    border: 2px solid var(--surface-card, #fff);
+}
+
+.teo-thread__body {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.teo-thread__line {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    min-width: 0;
+}
+
+.teo-thread__name {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-color, #212121);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.teo-thread__time {
+    flex-shrink: 0;
+    font-size: 11px;
+    color: var(--text-color-secondary, #6c757d);
+}
+
+.teo-thread__preview {
+    font-size: 13px;
+    color: var(--text-color-secondary, #6c757d);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.teo-thread__blocked {
+    flex-shrink: 0;
+    color: var(--red-500, #ef4444);
+    font-size: 12px;
+}
+
+/* --- Диалог --- */
+.teo-chat__dialog {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    min-height: 0;
+}
+
+.teo-chat__error {
+    padding: 8px 16px;
+    background: rgba(239, 68, 68, 0.12);
+    color: #b91c1c;
+    font-size: 13px;
+    border-bottom: 1px solid var(--content-border, #dee2e6);
+}
+
+.teo-chat__placeholder {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    color: var(--text-color-secondary, #6c757d);
+}
+
+.teo-chat__placeholder i {
+    font-size: 40px;
+    opacity: 0.4;
+}
+
+.teo-chat__header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    border-bottom: 1px solid var(--content-border, #dee2e6);
+    background: var(--surface-card, #fff);
+}
+
+.teo-chat__peer {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.teo-chat__peer strong {
+    font-size: 15px;
+    color: var(--text-color, #212121);
+}
+
+.teo-chat__peer-status {
+    font-size: 12px;
+    color: var(--text-color-secondary, #6c757d);
+}
+
+.teo-chat__peer-status.is-online {
+    color: #16a34a;
+}
+
+.teo-chat__actions {
+    display: flex;
+    gap: 4px;
+}
+
+.teo-chat__blocked-note {
+    padding: 6px 16px;
+    font-size: 13px;
+    background: rgba(239, 68, 68, 0.1);
+    color: #b91c1c;
+    border-top: 1px solid var(--content-border, #dee2e6);
+}
+
+/* --- Сообщения --- */
+.teo-chat-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    background: var(--surface-ground, #f8f9fa);
+}
+
+.teo-chat-messages__more {
+    display: flex;
+    justify-content: center;
+    min-height: 24px;
+    margin-bottom: 4px;
+}
+
+.teo-chat-messages__loading {
+    font-size: 13px;
+    color: var(--text-color-secondary, #6c757d);
+}
+
+.teo-chat-day {
+    display: flex;
+    justify-content: center;
+    margin: 12px 0 6px;
+}
+
+.teo-chat-day span {
+    font-size: 11px;
+    color: var(--text-color-secondary, #6c757d);
+    background: var(--surface-100, #e9ecef);
+    border-radius: 999px;
+    padding: 2px 10px;
+}
+
+.teo-msg {
+    display: flex;
+}
+
+.teo-msg.is-own {
+    justify-content: flex-end;
+}
+
+.teo-msg__bubble {
+    max-width: 72%;
+    padding: 8px 12px 4px;
+    border-radius: 12px;
+    background: var(--surface-0, #fff);
+    border: 1px solid var(--content-border, #dee2e6);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.03);
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.teo-msg.is-own .teo-msg__bubble {
+    background: var(--primary-color, #3b82f6);
+    border-color: var(--primary-color, #3b82f6);
+    color: var(--primary-color-text, #fff);
+}
+
+.teo-msg.is-failed .teo-msg__bubble {
+    border-color: var(--red-500, #ef4444);
+}
+
+.teo-msg__text {
+    font-size: 14px;
+    line-height: 1.45;
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+.teo-msg__meta {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 6px;
+    font-size: 11px;
+    opacity: 0.85;
+}
+
+.teo-msg__ticks {
+    letter-spacing: -2px;
+}
+
+.teo-msg.is-own .teo-msg__ticks.is-read {
+    color: #93c5fd;
+}
+
+.teo-msg__status {
+    display: inline-flex;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: default;
+    color: inherit;
+}
+
+.teo-msg__status.is-failed {
+    cursor: pointer;
+    color: var(--red-500, #ef4444);
+}
+
+.teo-msg.is-own .teo-msg__status.is-failed {
+    color: #fecaca;
+}
+
+/* --- Composer --- */
+.teo-chat-composer {
+    display: flex;
+    align-items: flex-end;
+    gap: 8px;
+    padding: 12px 16px;
+    border-top: 1px solid var(--content-border, #dee2e6);
+    background: var(--surface-card, #fff);
+}
+
+.teo-chat-composer__input {
+    flex: 1;
+    resize: none;
+    min-height: 42px;
+    max-height: 120px;
+    border-radius: 8px;
+}
+
+.teo-chat-composer .p-button {
+    height: 42px;
+    width: 42px;
+}

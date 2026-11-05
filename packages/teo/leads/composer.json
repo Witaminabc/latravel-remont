@@ -1,0 +1,19 @@
+﻿{
+    "name": "teo/leads",
+    "description": "Lead capture package for teo CMS — inquiry form, email notification, admin leads section",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Teo\\Leads\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Teo\\Leads\\LeadsServiceProvider"
+            ]
+        }
+    }
+}
+
